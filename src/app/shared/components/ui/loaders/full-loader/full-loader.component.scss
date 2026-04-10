@@ -1,0 +1,21 @@
+:host {
+    .splash {
+      position: fixed !important;
+      z-index: 99999 !important;
+      height: 100vh !important;
+      width: 100vw !important;
+      .flex {
+        margin-top: 45vh;
+        * {
+          font-weight: 500 !important;
+        }
+        img {
+          margin-right: -9px;
+        }
+        a {
+          top: 4px;
+        }
+      }
+    }
+    
+  }

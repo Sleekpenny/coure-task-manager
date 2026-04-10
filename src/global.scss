@@ -9,6 +9,11 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+ @import "./assets/theme/font.scss";
+ @import "./assets/theme/theme.scss";
+ @import "./assets/theme/animate.scss";
+ @import "./assets/theme/components.scss";
+  
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
 
