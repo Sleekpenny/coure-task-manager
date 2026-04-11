@@ -1,0 +1,13 @@
+.form-group{
+    display: grid;
+    row-gap: 20px;
+    column-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+
+  @media only screen and (max-width:825px) {
+    .form-group {
+        grid-template-columns: auto;
+    }
+  }

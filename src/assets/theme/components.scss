@@ -333,12 +333,12 @@ a { text-decoration: none; color: inherit; }
   }
 
   &__subtitle {
-    font-size: 12px;
     color: var(--color-text-muted);
     font-weight: 400;
   }
-
+  
   &__title {
+    margin-top: 20px;
     font-size: 20px;
     font-weight: 700;
     color: var(--color-text-primary);
@@ -961,23 +961,25 @@ a { text-decoration: none; color: inherit; }
 ───────────────────────────────────────── */
 .dashboard-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 320px;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr;
+  //grid-template-rows: auto auto;
   gap: var(--space-md);
-  padding: var(--space-lg);
+  padding-left: 20px;
 
   @media (max-width: 1280px) {
     grid-template-columns: 1fr 1fr 300px;
+    padding-left: 0
   }
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr 1fr;
+    padding-left: 0
   }
 
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
     padding: var(--space-md);
-    gap: var(--space-sm);
+    padding-left: 0
   }
 }
 
@@ -1006,7 +1008,6 @@ a { text-decoration: none; color: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 7px 14px;
   border-radius: var(--radius-full);
   font-size: 13px;
   font-weight: 500;

@@ -67,3 +67,19 @@ export interface NavItem {
     type: 'chevron' | 'toggle';
     toggled?: boolean;
   }
+
+  export interface TaskCardUser {
+    name: string;
+    imageUrl?: string;
+  }
+
+  export interface cardProps {
+    ticketId:string;
+    title:string;
+    description:string;
+    priority:string;
+    commentCount:number
+    assignees: TaskCardUser[]
+  }
+  
+  export type Priority = 'low' | 'medium' | 'high';

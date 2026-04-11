@@ -1,0 +1,9 @@
+.border-prop {
+    border-left: 2px solid var(--color-border-light);
+    padding: 0 10px 0 10px
+}
+
+.taskProps {
+    max-height: 90vh;
+    overflow-y: auto;
+}

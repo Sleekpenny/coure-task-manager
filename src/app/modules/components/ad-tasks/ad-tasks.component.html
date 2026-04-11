@@ -1,0 +1,25 @@
+<app-container>
+  <div class="panze-card__header">
+    <ion-label class="panze-card__title">Import tasks</ion-label>
+  </div>
+  
+  <div class="panze-task-prop">
+    <ion-button class="filter-btn" color="none"> Today</ion-button>
+    <ion-button class="filter-btn" color="none">Tomorrow</ion-button>
+  </div>
+  
+  @for (task of tasks; track task.id) {
+    <div class="task-item pressable" (click)="toggleTask.emit(task)">
+      <div class="task-item__body">
+        <div class="task-item__title">{{ task.title }}</div>
+        <div class="task-item__desc">{{ task.desc }}</div>
+      </div>
+      <div class="task-item__check" [class.done]="task.done">
+        @if (task.done) {
+          <ion-icon name="checkmark-outline"></ion-icon>
+        }
+      </div>
+    </div>
+  }
+</app-container>
+        

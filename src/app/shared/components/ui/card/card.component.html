@@ -1,0 +1,41 @@
+<app-container>
+  <div class="task-card">
+
+    <div class="task-card__header">
+      <span class="task-card__ticket-id">{{ card.ticketId }}</span>
+      <span class="task-card__priority" [ngClass]="'task-card__priority--' + card.priority">
+        {{ card.priority | titlecase }}
+      </span>
+    </div>
+  
+    <div class="task-card__body">
+      <h3 class="task-card__title">{{ card.title }}</h3>
+      <p class="task-card__description">{{ card.description }}</p>
+    </div>
+  
+    <div class="task-card__footer">
+      <div class="task-card__comments">
+        <ion-icon name="chatbox-outline"></ion-icon>
+        <span class="task-card__comment-count">{{ card.commentCount }}</span>
+      </div>
+  
+      <div class="task-card__assignees">
+        @for (user of card.assignees.slice(0, 4); track user.name) {
+          <div class="task-card__avatar" [title]="user.name">
+            @if (user.imageUrl) {
+              <img [src]="user.imageUrl" [alt]="user.name" />
+            } @else {
+              {{ initials(user) }}
+            }
+          </div>
+        }
+        @if (card.assignees.length > 4) {
+          <div class="task-card__avatar task-card__avatar--overflow">
+            +{{ card.assignees.length - 4 }}
+          </div>
+        }
+      </div>
+    </div>
+  
+  </div>
+</app-container>
