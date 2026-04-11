@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true">
   <app-page-content>
     <app-header [activeTab]="activeTab" (setTab)="setTab($event)" [tabs]="tabs" />
-    <app-header-title title="Tasks Dashboard" subTitle="Manage and track your projects" />
+    <app-header-title title="Tasks Dashboard" subTitle="Manage and track your projects" btnText="Create Task"  (create)="creteTask()" icon="pencil" />
     <div class="page-grid">
       <app-ad-tasks (toggleTask)="toggleTask($event)" [tasks]="tasks" />
       <app-task-card [tasks]="userTasks" />

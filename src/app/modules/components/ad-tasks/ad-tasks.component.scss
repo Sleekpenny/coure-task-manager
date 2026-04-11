@@ -1,6 +1,10 @@
-.panze-task-prop {
-    display: flex;
-    gap:10px;
-    padding-top : 20px;
-    padding-bottom: 10px;
+.ad-card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin-top: 20px;
+}
+
+.filter-prop {
+    padding-top:20px
 }

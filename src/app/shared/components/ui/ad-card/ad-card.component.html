@@ -1,0 +1,17 @@
+<div class="task-card">
+
+  <div class="task-card__top">
+    <div class="task-card__icon-wrap">
+      <ion-icon [name]="card.icon" size="large"></ion-icon>
+    </div>
+    <div class="task-card__check">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </div>
+  </div>
+
+  <div class="task-card__body">
+    <h3 class="task-card__title">{{ card.title }}</h3>
+    <p class="task-card__description">{{ card.description }}</p>
+  </div>
+
+</div>

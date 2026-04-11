@@ -1,4 +1,11 @@
-<div>
-  <h1 class="panze-topbar__title"> {{title}} </h1>
-  <p class="panze-topbar__subtitle">{{subTitle}}</p>
-</div>
+<div class="header-props">
+  <div>
+    <h1 class="panze-topbar__title"> {{ title }} </h1>
+    <p class="panze-topbar__subtitle">{{ subTitle }}</p>
+  </div>
+
+  <ion-button color="none" class="ion-no-padding btn-prop" (click)="create.emit()">
+    <ion-icon slot="start" [name]="icon"></ion-icon>
+    {{ btnText }}
+  </ion-button>
+  </div> 

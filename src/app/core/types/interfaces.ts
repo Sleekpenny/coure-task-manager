@@ -81,5 +81,12 @@ export interface NavItem {
     commentCount:number
     assignees: TaskCardUser[]
   }
-  
+
+  export interface AdCard {
+  id:number;
+  title: string;
+  description: string;
+  icon?:string
+}
+
   export type Priority = 'low' | 'medium' | 'high';

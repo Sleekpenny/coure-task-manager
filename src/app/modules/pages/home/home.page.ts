@@ -31,4 +31,8 @@ export class HomePage {
     this.activeTab = tab;
   }
 
+  creteTask() {
+    
+  }
+
 }

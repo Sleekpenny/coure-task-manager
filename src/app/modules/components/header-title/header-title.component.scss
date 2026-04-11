@@ -1,0 +1,12 @@
+.header-props { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .btn-prop {
+        padding: 0 10px 0 10px;
+        background: var(--ion-color-primary);
+        border-radius: var(--radius-md);
+    }
+}

@@ -1,4 +1,4 @@
-import { cardProps } from "../types/interfaces";
+import { AdCard, cardProps } from "../types/interfaces";
 
 export const navItems = [
     {
@@ -21,34 +21,19 @@ export const navItems = [
     },
   ];
 
-export const tasks = [
+export const tasks:AdCard[] = [
+
   {
     id: 1,
-    iconBg: '#fff0f0',
-    title: 'BrightBridge - Website Design',
-    desc: 'Design a framer website with modern templates',
-    done: true,
+    icon: 'logo-javascript', 
+    title: '9TDesign - Mobile App Prototype',
+    description: 'Ready prototype for testing user in this week.',
   },
   {
     id: 2,
-    iconBg: '#f0f0f0',
-    title: 'Github - Upload Dev Files & Images',
-    desc: 'Collaborate with Developers to handle the SaaS Project.',
-    done: false,
-  },
-  {
-    id: 3,
-    iconBg: '#fff5e6',
-    title: '9TDesign - Mobile App Prototype',
-    desc: 'Ready prototype for testing user in this week.',
-    done: false,
-  },
-  {
-    id: 4,
-    iconBg: '#f0f0ff',
+    icon: 'logo-linkedin',
     title: 'Horizon - Dashboard Design',
-    desc: 'Design a dashboard comfortable with Vision Pro',
-    done: false,
+    description: 'Design a dashboard comfortable with Vision Pro',
   },
 ];
 
