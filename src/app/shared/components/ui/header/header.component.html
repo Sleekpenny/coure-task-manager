@@ -1,3 +1,32 @@
-<p>
-  header works!
-</p>
+<div class="panze-topbar">
+  <ion-label size="large"> Task Manager </ion-label>
+  <div class="panze-topbar__tabs">
+    @for (tab of tabs; track tab) {
+    <ion-button class="panze-topbar__tab" color="none" [class.active]="activeTab === tab" (click)="setTab.emit(tab)">
+      {{ tab }}
+    </ion-button>
+    }
+  </div>
+
+  <div class="panze-topbar__right">
+    <div class="icon-btn has-badge">
+      <ion-icon name="notifications-outline"></ion-icon>
+    </div>
+    <div class="icon-btn">
+      <ion-icon name="refresh-outline"></ion-icon>
+    </div>
+    <div class="icon-btn">
+      <ion-icon name="time-outline"></ion-icon>
+    </div>
+    <div class="icon-btn">
+      <ion-icon name="options-outline"></ion-icon>
+    </div>
+    <div class="user-avatar">
+      <div class="user-avatar__img">JS</div>
+      <div class="user-avatar__info">
+        <div class="user-avatar__name">John Smith</div>
+        <div class="user-avatar__role">Project manager</div>
+      </div>
+    </div>
+  </div>
+</div>

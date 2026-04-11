@@ -1,62 +1,11 @@
 <ion-content [fullscreen]="true">
-    <app-page-content>
-
-        <div class="panze-topbar">
-        
-            <div class="panze-topbar__left">
-              <span class="panze-topbar__subtitle">Manage and track your projects</span>
-              <h1 class="panze-topbar__title">Project Dashboard</h1>
-            </div>
-          
-            <!-- Period Tabs (desktop) -->
-            <div class="panze-topbar__tabs">
-              @for (tab of tabs; track tab) {
-                <button
-                  class="panze-topbar__tab"
-                  [class.active]="activeTab === tab"
-                  (click)="setTab(tab)"
-                >
-                  {{ tab }}
-                </button>
-              }
-            </div>
-          
-            <!-- Search (desktop) -->
-            <div class="panze-topbar__center" style="display:flex;">
-              <div class="panze-search w-full">
-                <ion-icon name="search-outline"></ion-icon>
-                <input type="text" placeholder="Search Task, Meeting, Projects..." />
-              </div>
-            </div>
-          
-            <!-- Right actions -->
-            <div class="panze-topbar__right">
-              <button class="icon-btn has-badge">
-                <ion-icon name="notifications-outline"></ion-icon>
-              </button>
-              <button class="icon-btn">
-                <ion-icon name="refresh-outline"></ion-icon>
-              </button>
-              <button class="icon-btn">
-                <ion-icon name="time-outline"></ion-icon>
-              </button>
-              <button class="icon-btn">
-                <ion-icon name="options-outline"></ion-icon>
-              </button>
-              <div class="user-avatar">
-                <div class="user-avatar__img">JS</div>
-                <div class="user-avatar__info">
-                  <div class="user-avatar__name">John Smith</div>
-                  <div class="user-avatar__role">Project manager</div>
-                </div>
-              </div>
-            </div>
-          
-          </div>
-          
-          <!-- ════════════════════════════════════
-               MAIN GRID
-          ════════════════════════════════════ -->
+    <app-page-content>       
+          <app-header [activeTab]="activeTab" (setTab)="setTab($event)" [tabs]="tabs"/>   
+          <div class="panze-topbar__left">
+            <span class="panze-topbar__subtitle">Manage and track your projects</span>
+            <h1 class="panze-topbar__title">Project Dashboard</h1>
+          </div>      
+  
           <div class="dashboard-grid">
           
             <!-- ── Col 1: My Tasks ─────────────────────────── -->

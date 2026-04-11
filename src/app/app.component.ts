@@ -12,14 +12,23 @@ import * as ionIcons from 'ionicons/icons';
 })
 export class AppComponent {
 
-  showsplash: boolean = true;
+  showSplash = true;
+  splashHiding = false;
+  
   constructor() {
     addIcons(ionIcons);
   }
 
-  ngOnInit() {
+
+  ngOnInit(): void {
+    // Step 1: after 2s, trigger the fade-out animation
     setTimeout(() => {
-      this.showsplash = false;
+      this.splashHiding = true;
+ 
+      // Step 2: once animation (300ms) finishes, remove from DOM
+      setTimeout(() => {
+        this.showSplash = false;
+      }, 300);
     }, 2000);
   }
 }

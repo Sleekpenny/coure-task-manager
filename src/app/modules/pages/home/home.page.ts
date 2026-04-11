@@ -3,12 +3,13 @@ import { IonContent, IonIcon } from '@ionic/angular/standalone';
 import { InvoiceRow, MeetingItem, ProjectStat, TicketItem } from '@app/core';
 import { NgClass } from '@angular/common';
 import { PageContentComponent } from "@app/shared/components/layouts/page-content/page-content.component";
+import { HeaderComponent } from "@app/shared/components/ui/header/header.component";
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonIcon, IonContent, NgClass, PageContentComponent],
+  imports: [IonIcon, IonContent, NgClass, PageContentComponent, HeaderComponent],
   standalone:true
 })
 export class HomePage {

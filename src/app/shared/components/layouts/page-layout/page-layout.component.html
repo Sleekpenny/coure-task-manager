@@ -1,4 +1,7 @@
-<div class="page-layout">
-  <app-header />
+<div class="panze-shell">
   <app-side-bar [navItems]="navItems" />
+  <div class="panze-shell__content">
+    <ion-router-outlet></ion-router-outlet>
+  </div>
+
 </div>

@@ -1,12 +1,23 @@
+/*
+ * Panze App – Global Styles
+ * All reusable styles live here. Component SCSS files should be minimal.
+ * Font: DM Sans (Google Fonts) loaded via index.html
+ */
+
+/* ─────────────────────────────────────────
+   1. GOOGLE FONTS IMPORT
+───────────────────────────────────────── */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
-
+/* ─────────────────────────────────────────
+   2. IONIC VARIABLES OVERRIDE – LIGHT MODE
+───────────────────────────────────────── */
 :root {
   --ion-font-family: 'DM Sans', sans-serif;
 
   /* Brand Colors */
   --color-primary: #6366f1;
-  --color-primary-light: #eef2ff;
+  --color-primary-light: rgba(99, 102, 241, 0.1);
   --color-primary-dark: #4f46e5;
   --color-secondary: #f59e0b;
   --color-success: #10b981;
@@ -14,21 +25,21 @@
   --color-warning: #f59e0b;
   --color-info: #3b82f6;
 
-  /* Surfaces */
-  //--color-bg: #f8f9fc;
+  /* Surfaces – light */
+  --color-bg: #f1f3f8;
   --color-surface: #ffffff;
-  --color-surface-2: #f1f3f8;
+  --color-surface-2: #e8eaf0;
   --color-sidebar: #ffffff;
 
-  /* Text */
+  /* Text – light */
   --color-text-primary: #111827;
   --color-text-secondary: #6b7280;
   --color-text-muted: #9ca3af;
   --color-text-inverse: #ffffff;
 
-  /* Borders */
-  --color-border: #e5e7eb;
-  --color-border-light: #f3f4f6;
+  /* Borders – light */
+  --color-border: #d1d5db;
+  --color-border-light: #e5e7eb;
 
   /* Spacing */
   --space-xs: 4px;
@@ -49,15 +60,15 @@
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
-  --shadow-card: 0 2px 12px rgba(99, 102, 241, 0.06);
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.05);
 
-  /* Sidebar */
+  /* Layout */
   --sidebar-width-desktop: 72px;
   --sidebar-width-expanded: 220px;
   --topbar-height: 64px;
   --bottom-tab-height: 64px;
 
-  /* Ionic overrides */
+  /* Ionic overrides – light */
   --ion-background-color: var(--color-bg);
   --ion-text-color: var(--color-text-primary);
   --ion-color-primary: var(--color-primary);
@@ -71,6 +82,87 @@
   --ion-card-background: var(--color-surface);
 }
 
+/* ─────────────────────────────────────────
+   2b. DARK MODE OVERRIDES
+   Matches Ionic's .ion-palette-dark class
+   AND prefers-color-scheme: dark
+───────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Surfaces – dark */
+    --color-bg: #0f1117;
+    --color-surface: #1a1d27;
+    --color-surface-2: #22263a;
+    --color-sidebar: #1a1d27;
+
+    /* Text – dark */
+    --color-text-primary: #f3f4f6;
+    --color-text-secondary: #9ca3af;
+    --color-text-muted: #6b7280;
+    --color-text-inverse: #111827;
+
+    /* Borders – dark */
+    --color-border: #2d3148;
+    --color-border-light: #252840;
+
+    /* Brand adjusted for dark */
+    --color-primary-light: rgba(99, 102, 241, 0.15);
+
+    /* Shadows – stronger on dark */
+    --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.3);
+
+    /* Ionic dark overrides */
+    --ion-background-color: var(--color-bg);
+    --ion-background-color-rgb: 15, 17, 23;
+    --ion-text-color: var(--color-text-primary);
+    --ion-text-color-rgb: 243, 244, 246;
+    --ion-toolbar-background: var(--color-surface);
+    --ion-toolbar-color: var(--color-text-primary);
+    --ion-card-background: var(--color-surface);
+    --ion-item-background: transparent;
+    --ion-border-color: var(--color-border);
+  }
+}
+
+/* Also support Ionic's explicit dark class for manual toggle */
+.ion-palette-dark {
+  --color-bg: #0f1117;
+  --color-surface: #1a1d27;
+  --color-surface-2: #22263a;
+  --color-sidebar: #1a1d27;
+  --color-text-primary: #f3f4f6;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted: #6b7280;
+  --color-text-inverse: #111827;
+  --color-border: #2d3148;
+  --color-border-light: #252840;
+  --color-primary-light: rgba(99, 102, 241, 0.15);
+  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.3);
+  --ion-background-color: var(--color-bg);
+  --ion-text-color: var(--color-text-primary);
+  --ion-toolbar-background: var(--color-surface);
+  --ion-card-background: var(--color-surface);
+  --ion-border-color: var(--color-border);
+}
+
+/* ─────────────────────────────────────────
+   3. BASE RESET & TYPOGRAPHY
+───────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'DM Sans', sans-serif;
@@ -91,19 +183,34 @@ p { margin: 0; }
 a { text-decoration: none; color: inherit; }
 
 /* ─────────────────────────────────────────
-   4. LAYOUT – SHELL (Sidebar + Content)
+   4. PAGE LAYOUT – wraps sidebar + content
+   Use .page-layout on a wrapper div that
+   contains <app-side-bar> and the routed
+   page content side by side.
+───────────────────────────────────────── */
+.page-layout {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+/* ─────────────────────────────────────────
+   4b. SHELL (Sidebar + Content)
 ───────────────────────────────────────── */
 .panze-shell {
   display: flex;
-  min-height: 100vh;
-
+  height: 100vh;
+  max-width: 80rem;
+    overflow: hidden;
+  background: var(--color-bg);
 
   &__sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
+   // position: relative; /* NOT fixed — sits naturally in the flex row */
+   // flex-shrink: 0;
     width: var(--sidebar-width-desktop);
+    height: 100vh;
     background: var(--color-surface);
     border-right: 1px solid var(--color-border-light);
     display: flex;
@@ -112,6 +219,7 @@ a { text-decoration: none; color: inherit; }
     padding: var(--space-lg) 0;
     z-index: 100;
     transition: width 0.25s ease;
+    overflow: hidden;
 
     @media (max-width: 768px) {
       display: none;
@@ -185,24 +293,32 @@ a { text-decoration: none; color: inherit; }
     }
   }
 
+  /* The scrollable content column */
   &__content {
-    margin-left: var(--sidebar-width-desktop);
-    flex: 1;
-    min-height: 100vh;
+  //  flex: 1;
+    min-width: 0; /* prevents flex blowout */
+    height: 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
+    background: var(--color-bg);
+
+
 
     @media (max-width: 768px) {
-      margin-left: 0;
       padding-bottom: var(--bottom-tab-height);
     }
   }
 }
 
+/* ─────────────────────────────────────────
+   5. TOPBAR / HEADER
+───────────────────────────────────────── */
 .panze-topbar {
   height: var(--topbar-height);
   background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border-light);
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -258,28 +374,22 @@ a { text-decoration: none; color: inherit; }
   }
 
   &__tab {
-    padding: 6px 16px;
     border-radius: var(--radius-full);
-    font-size: 13px;
     font-weight: 500;
-    color: var(--color-text-secondary);
     cursor: pointer;
     transition: all 0.15s ease;
     border: none;
-    background: transparent;
 
     &.active {
       background: var(--color-primary);
       color: #fff;
-      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
-    }
-
-    &:not(.active):hover {
-      color: var(--color-text-primary);
     }
   }
 }
 
+/* ─────────────────────────────────────────
+   6. SEARCH INPUT
+───────────────────────────────────────── */
 .panze-search {
   display: flex;
   align-items: center;
@@ -317,7 +427,9 @@ a { text-decoration: none; color: inherit; }
   }
 }
 
-
+/* ─────────────────────────────────────────
+   7. ICON BUTTON (topbar actions)
+───────────────────────────────────────── */
 .icon-btn {
   width: 38px;
   height: 38px;
@@ -358,7 +470,9 @@ a { text-decoration: none; color: inherit; }
   }
 }
 
-
+/* ─────────────────────────────────────────
+   8. USER AVATAR
+───────────────────────────────────────── */
 .user-avatar {
   display: flex;
   align-items: center;
@@ -386,20 +500,20 @@ a { text-decoration: none; color: inherit; }
   }
 
   &__name {
-    font-size: 13px;
     font-weight: 600;
     color: var(--color-text-primary);
     line-height: 1.2;
   }
 
   &__role {
-    font-size: 11px;
     color: var(--color-text-muted);
-    line-height: 1.2;
+    line-height: 1.4;
   }
 }
 
-
+/* ─────────────────────────────────────────
+   9. CARDS
+───────────────────────────────────────── */
 .panze-card {
   background: var(--color-surface);
   border-radius: var(--radius-lg);
@@ -1130,4 +1244,100 @@ ion-toolbar {
   cursor: pointer;
 
   &:active { transform: scale(0.97); }
+}
+
+/* ─────────────────────────────────────────
+   26. SPLASH SCREEN
+   The entire .splash element (background
+   + all children) fades out together as
+   one unit. The host component adds the
+   .splash--hiding class, waits for the
+   300ms animation, then sets showSplash
+   = false via setTimeout.
+
+   Usage in component:
+     1. Add .splash--hiding class when timer fires
+     2. After 300ms (animationDuration), set showSplash = false
+
+   TypeScript pattern:
+     hideSplash() {
+       this.splashHiding = true;          // adds .splash--hiding
+       setTimeout(() => {
+         this.showSplash = false;         // removes element from DOM
+       }, 300);                           // matches animation duration
+     }
+───────────────────────────────────────── */
+.splash {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+
+  /* Light mode background */
+  background: var(--ion-background-color, #f1f3f8);
+
+  /* Fade IN on mount */
+  animation: splashFadeIn 0.25s ease forwards;
+
+  /* When .splash--hiding is added, fade OUT everything together */
+  &.splash--hiding {
+    animation: splashFadeOut 0.3s ease forwards;
+    pointer-events: none;
+  }
+}
+
+.splash-container {
+  max-width: 260px;
+  margin: auto;
+}
+
+.splash-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  position: relative;
+}
+
+.spinner-ring {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--color-text-muted);
+  border-right-color: var(--color-text-muted);
+  animation: splashSpin 0.8s linear infinite;
+}
+
+.splash-text {
+  color: var(--color-text-secondary);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+@keyframes splashFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Fades the entire splash div (background + children) as one */
+@keyframes splashFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes splashSpin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

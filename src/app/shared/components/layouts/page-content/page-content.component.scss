@@ -1,4 +1,6 @@
 .page-content{
-    padding: 50px;
-    margin: auto;
+    //width: 100%;
+    margin: 0 auto;
+    max-width: 80rem;
+    padding: var(--space-lg); 
 }

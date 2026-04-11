@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-full-loader',
@@ -10,6 +10,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class FullLoaderComponent  implements OnInit {
 
+  @Input() splashHiding!: boolean;
   constructor() { }
 
   ngOnInit() {}
