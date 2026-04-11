@@ -7,12 +7,14 @@ import { HeaderComponent } from "@app/shared/components/ui/header/header.compone
 import { AdTasksComponent } from "@app/modules/components/ad-tasks/ad-tasks.component";
 import { TaskCardComponent } from "@app/modules/components/task-card/task-card.component";
 import { HeaderTitleComponent } from "@app/modules/components/header-title/header-title.component";
+import { CreateTaskComponent } from "@app/modules/components/create-task/create-task.component";
+import { ComponentServices } from '@app/shared/services';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonContent, PageContentComponent, HeaderComponent, AdTasksComponent, TaskCardComponent, HeaderTitleComponent],
+  imports: [IonContent, PageContentComponent, HeaderComponent, AdTasksComponent, TaskCardComponent, HeaderTitleComponent, CreateTaskComponent],
   standalone:true
 })
 export class HomePage {
@@ -21,7 +23,8 @@ export class HomePage {
  
   tasks = tasks;
   userTasks = userTasks;
-  constructor() {}
+
+  constructor(private component: ComponentServices) {}
 
   toggleTask(task: any): void {
     task.done = !task.done;
@@ -31,8 +34,8 @@ export class HomePage {
     this.activeTab = tab;
   }
 
-  creteTask() {
-    
+  createTask() {
+    this.component.presentModal(CreateTaskComponent,'')
   }
 
 }

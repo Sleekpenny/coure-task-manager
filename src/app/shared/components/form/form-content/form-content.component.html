@@ -1,35 +1,47 @@
-@switch (type) { @case ('EMAIL') {
+@switch (type) { 
+   @case ('TEXTAREA') {
 <div class="form-elem">
-  <ion-label *ngIf="label"> {{ label }} </ion-label>
-  <ion-input
-    type="email"
-    [placeholder]="placeholder"
-    class="ion-padding"
-    fill="outline"
-    [disabled]="disable"
-    [value]="value"
-    email
-    #formemail
-    (ionInput)="ngModelMethod(formemail.value)"
-  ></ion-input>
-</div>
-} @case ('TEXTAREA') {
-<div class="form-elem">
-  <ion-label *ngIf="label"> {{ label }} </ion-label>
+  @if (label) {
+    <ion-label> {{ label }} </ion-label>
+  }
   <ion-textarea
     [disabled]="disable"
     [placeholder]="placeholder"
-    [value]="value"
     auto-grow="true"
     fill="outline"
-    cols="4"
+    cols="12"
+    rows="8"
+    [value]="value"
+    [maxlength]="maxValue"
     #formtextarea
     (ionInput)="ngModelMethod(formtextarea.value)"
   ></ion-textarea>
 </div>
-} @case ('SELECT') {
+}
+@case ('DATE') {
+  
+    <div class="form-elem">
+      @if (label) {
+        <ion-label> {{ label }} </ion-label>
+      }
+      <ion-input
+        type="date"
+        class="ion-padding"
+        fill="outline"
+        #forminput
+        [disabled]="disable"
+        [placeholder]="placeholder"
+        [value]="value"
+        (ionInput)="ngModelMethod(forminput.value)"
+      ></ion-input>
+    </div>
+    
+}
+@case ('SELECT') {
 <div class="form-elem">
-  <ion-label *ngIf="label"> {{ label }} </ion-label>
+  @if (label) {
+    <ion-label> {{ label }} </ion-label>
+  }
   <ion-select
     fill="outline"
     [placeholder]="placeholder"
@@ -39,144 +51,17 @@
     (ionChange)="ngModelMethod(formselect.value)"
   >
     @for (option of selectOptions; track $index) {
-    <ion-select-option [value]="option?.id ?? option[optionKey]">
-      {{ option?.value ?? option[optionValue] }}
+    <ion-select-option [value]="option?.id">
+      {{ option?.value }}
     </ion-select-option>
     }
   </ion-select>
 </div>
-} @case ('NUMBER') {
+}    @default {
 <div class="form-elem">
-  <ion-label *ngIf="label"> {{ label }} </ion-label>
-  <ion-input
-    type="number"
-    [placeholder]="placeholder"
-    [value]="value"
-    class="ion-padding"
-    [disabled]="disable"
-    fill="outline"
-    min-length="11"
-    max-length="15"
-    #formnumber
-    (ionInput)="ngModelMethod(formnumber.value)"
-  ></ion-input>
-</div>
-} @case ('SEARCH') {
-<div class="form-elem">
-  <ion-input
-    [placeholder]="placeholder"
-    [disabled]="disable"
-    [value]="value"
-    [debounce]="500"
-    class="ion-padding"
-    fill="outline"
-    autocomplete="off"
-    #formsearch
-    (ionInput)="ngModelMethod(formsearch.value)"
-  >
-    <ion-icon slot="start" name="search" aria-hidden="true"></ion-icon>
-  </ion-input>
-</div>
-} @case ('PASSWORD') {
-<div class="form-elem">
-  <ion-label *ngIf="label"> {{ label }} </ion-label>
-  <ion-input
-    type="password"
-    [placeholder]="placeholder"
-    [disabled]="disable"
-    class="ion-padding"
-    fill="outline"
-    #formpassword
-    (ionInput)="ngModelMethod(formpassword.value)"
-    inputmode="Password"
-  >
-    <ion-input-password-toggle
-      slot="end"
-      showIcon="eye-outline"
-      hideIcon="eye-off-outline"
-      [color]="'medium'"
-    ></ion-input-password-toggle
-  ></ion-input>
-</div>
-} @case ('CONFIRM_PASSWORD') {
-<div class="form-elem">
-  <ion-label *ngIf="label"> {{ label }} </ion-label>
-  <ion-input
-    type="password"
-    [placeholder]="placeholder"
-    class="ion-padding"
-    fill="outline"
-    #formcpassword
-    (ionInput)="ngModelMethod(formcpassword.value)"
-    [disabled]="disable"
-    inputmode="Password"
-  >
-    <ion-input-password-toggle
-      slot="end"
-      showIcon="eye-outline"
-      hideIcon="eye-off-outline"
-      [color]="'medium'"
-    ></ion-input-password-toggle
-  ></ion-input>
-</div>
-} @case ('CHECK_BOX') {
-<div class="form-elem checkbox">
-  <ion-checkbox
-    labelPlacement="end"
-    [checked]="checked"
-    [disabled]="disable"
-    #formcheckbox
-    (ionChange)="ngModelMethod(formcheckbox.checked)"
-  >
-    <ng-content></ng-content>
-  </ion-checkbox>
-</div>
-} @case ('BUTTON') {
-<div class="form-elem">
-  <ion-button
-    type="button"
-    [disabled]="disable"
-    class="ion-padding"
-    expand="block"
-    [color]="color"
-  >
-    {{ label }}
-  </ion-button>
-</div>
-} @case ('RANGE') {
-<div class="form-elem">
-  <ion-range
-    #ranger
-    *ngIf="maximum"
-    [disabled]="disable"
-    [dualKnobs]="true"
-    [debounce]="700"
-    [max]="maximum"
-    [min]="minimum"
-    [value]="{
-      lower: minValue,
-      upper: maxValue
-    }"
-    (ionChange)="ngModelMethod(ranger)"
-  ></ion-range>
-</div>
-} @case ('TEXT_EDITOR') {
-<div class="form-elem">
-  <ion-label *ngIf="label"> {{ label }} </ion-label>
-  <editor
-    apiKey="npshckcni4iwybepiacyasyfhtenv4z24t6m3r3cnfs3dj97"
-    [inline]="true"
-    [initialValue]="value"
-    [disabled]="disable"
-    [init]="init"
-    modelEvents="change input nodechange undo redo"
-    (ngModelChange)="ngModelMethod(textEditorValue)"
-    [(ngModel)]="textEditorValue"
-  />
-</div>
-} @default {
-<div class="form-elem">
-  <ion-label *ngIf="label"> {{ label }} </ion-label>
+  @if (label) {
+    <ion-label> {{ label }} </ion-label>
+  }
   <ion-input
     type="text"
     class="ion-padding"

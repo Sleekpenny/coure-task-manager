@@ -1,34 +1,11 @@
-@import '../../../../../assets/scss/utilities/variables.scss';
-
-ion-button {
-  padding: 0px;
+ion-label {
+  font-size: 16px;
 }
 
-.checkbox {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-
-  ion-checkbox {
-    --border-radius: 5px;
-  }
+.form-elem {
+  padding: 10px 0 10px 0
 }
 
-editor {
-  ::ng-deep {
-    div {
-      background-color: rgba(var(--ion-color-medium-rgb), 0.12);
-      border-radius: var(--efe-border-radius);
-      font-size: var(--efe-md-font);
-      box-shadow: none;
-      height: auto;
-      padding: 10px;
-      padding-left: 12px;
-
-      ::-webkit-outer-spin-button,
-      ::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-      }
-    }
-  }
+ion-select {
+color: var(--ion-color-primary);
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { IonLabel, IonText } from '@ionic/angular/standalone';
 
 @Component({
@@ -6,7 +6,9 @@ import { IonLabel, IonText } from '@ionic/angular/standalone';
   templateUrl: './form-titles.component.html',
   styleUrls: ['./form-titles.component.scss'],
   standalone: true,
-  imports: [IonText, IonLabel]
+  imports: [IonText, IonLabel],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class FormTitlesComponent  implements OnInit {
 

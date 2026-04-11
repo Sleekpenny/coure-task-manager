@@ -25,13 +25,13 @@ export const tasks:AdCard[] = [
 
   {
     id: 1,
-    icon: 'logo-javascript', 
+    icon: 'logo-github', 
     title: '9TDesign - Mobile App Prototype',
     description: 'Ready prototype for testing user in this week.',
   },
   {
     id: 2,
-    icon: 'logo-linkedin',
+    icon: 'logo-twitch',
     title: 'Horizon - Dashboard Design',
     description: 'Design a dashboard comfortable with Vision Pro',
   },
