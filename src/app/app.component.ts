@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 import { FullLoaderComponent } from './shared/components/ui/loaders/full-loader/full-loader.component';
+import { addIcons } from 'ionicons';
+import * as ionIcons from 'ionicons/icons';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +13,9 @@ import { FullLoaderComponent } from './shared/components/ui/loaders/full-loader/
 export class AppComponent {
 
   showsplash: boolean = true;
-  constructor() {}
+  constructor() {
+    addIcons(ionIcons);
+  }
 
   ngOnInit() {
     setTimeout(() => {

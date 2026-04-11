@@ -1,0 +1,39 @@
+<div class="panze-shell">
+  <aside class="panze-shell__sidebar">
+    <div class="panze-shell__logo">
+      <span>P</span>
+    </div>
+
+    <nav class="panze-shell__nav">
+      @for (item of navItems; track item.route) {
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          class="panze-shell__nav-item pressable"
+          [attr.aria-label]="item.label"
+          [title]="item.label"
+        >
+          <ion-icon [name]="item.icon"></ion-icon>
+        </a>
+      }
+    </nav>
+  </aside>
+  
+  <main>
+    <ion-router-outlet />
+  </main>
+</div>
+
+
+<nav class="panze-bottom-tabs">
+  @for (item of navItems; track item.route) {
+    <a
+      [routerLink]="item.route"
+      routerLinkActive="active"
+      class="panze-bottom-tabs__item"
+    >
+      <ion-icon [name]="item.icon"></ion-icon>
+      <span>{{ item.label }}</span>
+    </a>
+  }
+</nav>

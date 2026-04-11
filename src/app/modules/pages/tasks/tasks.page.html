@@ -1,0 +1,113 @@
+<ion-content [fullscreen]="true">
+      <app-page-content>
+
+<div class="panze-topbar">
+  <div class="panze-topbar__left">
+    <span class="panze-topbar__subtitle">Manage and track your work</span>
+    <h1 class="panze-topbar__title">My Tasks</h1>
+  </div>
+
+  <div class="panze-topbar__center" style="display:flex;">
+    <div class="panze-search w-full">
+      <ion-icon name="search-outline"></ion-icon>
+      <input type="text" placeholder="Search tasks..." />
+    </div>
+  </div>
+
+  <div class="panze-topbar__right">
+    <button class="icon-btn">
+      <ion-icon name="funnel-outline"></ion-icon>
+    </button>
+    <button class="filter-btn active" style="gap:6px; padding: 8px 16px;">
+      <ion-icon name="add-outline" style="font-size:16px;"></ion-icon>
+      New Task
+    </button>
+    <div class="user-avatar">
+      <div class="user-avatar__img">JS</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="tasks-grid">
+
+  <!-- Filter Bar -->
+  <div class="task-filter-bar">
+    @for (f of filters; track f) {
+      <button class="filter-btn" [class.active]="activeFilter === f" (click)="setFilter(f)">
+        {{ f }}
+      </button>
+    }
+  </div>
+
+  <!-- Task Table -->
+  <div class="panze-card" style="padding: 0; overflow: hidden;">
+
+    <!-- Header -->
+    <div class="task-table-header">
+      <span>Task Name</span>
+      <span>Assignee</span>
+      <span>Due Date</span>
+      <span>Priority</span>
+      <span>Status</span>
+    </div>
+
+    <!-- Rows -->
+    @for (task of filteredTasks; track task.id) {
+      <div class="task-table-row pressable">
+
+        <!-- Name + Project -->
+        <div class="flex items-center gap-sm">
+          <div
+            style="width:8px; height:8px; border-radius:50%; flex-shrink:0;"
+            [style.background]="task.projectColor"
+          ></div>
+          <div>
+            <div style="font-size:13px; font-weight:600; color: var(--color-text-primary);">
+              {{ task.title }}
+            </div>
+            <div style="font-size:11px; color: var(--color-text-muted);">
+              {{ task.project }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Assignee -->
+        <div class="flex items-center gap-sm">
+          <div
+            style="width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:#fff; flex-shrink:0;"
+            [style.background]="task.avatarColor"
+          >
+            {{ task.initials }}
+          </div>
+          <span style="font-size:13px; color: var(--color-text-secondary);">{{ task.assignee }}</span>
+        </div>
+
+        <!-- Due Date -->
+        <div class="flex items-center gap-xs" style="font-size:13px; color: var(--color-text-secondary);">
+          <ion-icon name="calendar-outline" style="font-size:14px; color: var(--color-text-muted);"></ion-icon>
+          {{ task.dueDate }}
+        </div>
+
+        <!-- Priority -->
+        <div class="flex items-center gap-xs">
+          <div
+            style="width:8px; height:8px; border-radius:50%; flex-shrink:0;"
+            [style.background]="getPriorityColor(task.priority)"
+          ></div>
+          <span style="font-size:13px; color: var(--color-text-secondary);">{{ task.priority }}</span>
+        </div>
+
+        <!-- Status -->
+        <div class="badge" [ngClass]="getStatusClass(task.status)">
+          {{ task.status }}
+        </div>
+
+      </div>
+    }
+
+  </div>
+
+</div>
+      </app-page-content>
+</ion-content>
