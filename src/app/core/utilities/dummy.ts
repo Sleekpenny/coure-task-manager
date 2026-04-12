@@ -36,8 +36,6 @@ export const tasks:AdCard[] = [
     description: 'Design a dashboard comfortable with Vision Pro',
   },
 ];
-
-// export const  userTasks: cardProps[]  =[
 //   {
 //     ticketId: "TKT-0042",
 //     title: "Redesign onboarding splash screen",
