@@ -27,10 +27,7 @@ export class FormContentComponent implements OnInit {
 
   @Input() minValue: any;
   @Input() maxValue: any;
-  @Input() minimum: any;
-  @Input() maximum: any;
-
-
+  
   constructor() { }
 
   ngOnInit() { }

@@ -40,6 +40,8 @@
     label="Task description"
     [value]="task?.description"
     placeholder="Write a short brief of your task"
+    [maxValue]="200"
+    [minValue]="200"
     (ngModel)="formData.description.value = $event"
     /> 
 

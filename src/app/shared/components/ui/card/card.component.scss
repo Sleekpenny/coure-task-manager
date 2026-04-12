@@ -18,7 +18,6 @@
     &__ticket-id {
       font-weight: 800;
       font-size: 12px;
-      color: var(--color-text-primary);;
       text-transform: uppercase;
     }
 
@@ -28,8 +27,7 @@
       color: var(--color-text-primary);
       border-radius: 20%;
     }
-  
-    // ── Body ────────────────────────────────────────────
+
     &__body {
       display: flex;
       flex-direction: column;
@@ -78,7 +76,6 @@
       color: #6b6b6b;
     }
   
-    // ── Assignee avatars ─────────────────────────────────
     &__assignees {
       display: flex;
       align-items: center;

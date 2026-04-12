@@ -13,8 +13,14 @@ import { IonButton, IonLabel, ModalController, ToastController } from "@ionic/an
 })
 export class CreateTaskComponent  implements OnInit {
   @Input() task?: FullTask;
-  selectOptions= ['Low', 'Meduim', 'High', 'All'];
-  selectOptionsStatus= ['In Progress', 'Not Stated', 'Overdue', 'Completed', 'All' ];
+  selectOptions= [{id: 'low', value: 'Low'}, {id:'medium', value: 'Medium'}, {id: 'high', value: 'High'}, {id:'all', value: 'Alll'}];
+  selectOptionsStatus= [ 
+    {value: 'all', id: 'All'},
+    {value: 'in-progress', id: 'In Progress'},
+    {value: 'completed', id: 'Completed'},
+    {value: 'not-started', id: 'Not Started'},
+    {value: 'overdue', id: 'Overdue'},
+  ];
   isLoading: boolean = false
 
   formEnum = {

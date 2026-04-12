@@ -7,14 +7,14 @@
     </ion-label>
 
     <div class="task-card__header">
-      <span class="task-card__ticket-id">{{ card.id }}</span>
+      <ion-label color="medium" class="task-card__ticket-id">TKT-{{ card.id }}</ion-label>
       <span class="task-card__priority" [ngClass]="'task-card__priority--' + card.priority">
         {{ card.priority | titlecase }}
       </span>
     </div>
   
     <div class="task-card__body">
-      <h3 class="task-card__title">{{ card.title }}</h3>
+      <h3 class="task-card__title">{{ card.title | uppercase }}</h3>
       <p class="task-card__description">{{ card.description }}</p>
     </div>
   

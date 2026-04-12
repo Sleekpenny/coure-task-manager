@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ContainerComponent } from "../container/container.component";
 import {  FullTask } from '@app/core';
-import { NgClass, TitleCasePipe } from '@angular/common';
+import { NgClass, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { IonIcon, IonLabel } from "@ionic/angular/standalone";
 
 @Component({
@@ -9,7 +9,7 @@ import { IonIcon, IonLabel } from "@ionic/angular/standalone";
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   standalone: true,
-  imports: [IonLabel, IonIcon, ContainerComponent, TitleCasePipe, NgClass],
+  imports: [IonLabel, IonIcon, ContainerComponent, TitleCasePipe, NgClass, UpperCasePipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
