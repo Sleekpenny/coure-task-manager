@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { ContainerComponent } from "../container/container.component";
-import { cardProps, TaskCardUser } from '@app/core';
+import {  FullTask } from '@app/core';
 import { NgClass, TitleCasePipe } from '@angular/common';
 import { IonIcon, IonLabel } from "@ionic/angular/standalone";
 
@@ -14,19 +14,7 @@ import { IonIcon, IonLabel } from "@ionic/angular/standalone";
 })
 export class CardComponent {
 
-  @Input() card!: cardProps
- 
-  get initials(): (user: TaskCardUser) => string {
-    return (user: TaskCardUser) =>
-      user.name
-        .split(' ')
-        .map((n) => n[0])
-        .join('')
-        .toUpperCase()
-        .slice(0, 2);
-  
-
-  }
+  @Input() card!: FullTask
 
   getStatusClass(status: string): string {
     const map: Record<string, string> = {

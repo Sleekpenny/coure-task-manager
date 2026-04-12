@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormEnum } from '@app/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { FormEnum, FullTask, TaskServices } from '@app/core';
 import { FormContentComponent, FormContentGroupComponent, FormTitlesComponent } from '@app/shared/components';
 import { FormHandler } from '@app/shared/services/form-handler';
 import { IonButton, IonLabel, ModalController, ToastController } from "@ionic/angular/standalone";
@@ -12,9 +12,9 @@ import { IonButton, IonLabel, ModalController, ToastController } from "@ionic/an
   imports: [IonLabel, FormContentComponent, FormContentGroupComponent, FormTitlesComponent, IonButton]
 })
 export class CreateTaskComponent  implements OnInit {
-
-  selectOptions= ['Low', 'Meduim', 'High'];
-  selectOptionsStatus= ['In Progress', 'Not Stated', 'Overdue', 'Completed', ];
+  @Input() task?: FullTask;
+  selectOptions= ['Low', 'Meduim', 'High', 'All'];
+  selectOptionsStatus= ['In Progress', 'Not Stated', 'Overdue', 'Completed', 'All' ];
   isLoading: boolean = false
 
   formEnum = {
@@ -25,18 +25,10 @@ export class CreateTaskComponent  implements OnInit {
 
   formData = {
     date: {
-      value: '',
-      required: true,
-    },
-    id: {
-      value: '',
+      value: new Date() as Date,
       required: true,
     },
     status: {
-      value: '',
-      required: true,
-    },
-    da: {
       value: '',
       required: true,
     },
@@ -44,32 +36,64 @@ export class CreateTaskComponent  implements OnInit {
       value: '',
       required: true,
     },
-    piority: {
+    priority: {
       value: '',
       required: true,
     },
-    desc: {
+    description: {
       value: '',
       required: true,
     },
   }
-  constructor(private formHanlder: FormHandler, private modalController: ModalController, private toastController: ToastController) { }
+  constructor(private formHanlder: FormHandler, private modalController: ModalController, private toastController: ToastController, private taskServices: TaskServices) { }
 
-  ngOnInit() {}
-
+  ngOnInit(): void {
+    if (this.task) {
+      this.formData.title.value   = this.task.title   ?? '';
+      this.formData.description.value    = this.task.description ?? '';
+      this.formData.date.value = this.task.date ?? new Date();
+      this.formData.priority.value = this.task.priority ?? '';
+      this.formData.status.value  = this.task.status  ?? '';
+    }
+  }
+ 
   async submit() {
-
-    try{
-      this.isLoading = await true;
+    try {
+      this.isLoading = true;
+ 
       const validatedFormData = this.formHanlder.validateForm(this.formData);
       if (!validatedFormData) return;
-      console.log(this.formData);
-      await this.modalController.dismiss();
+      console.log(validatedFormData);
 
-    } catch(e) {
-      this.toastController.create();
-      this.isLoading = await false;
+      if (this.task) {
+        this.taskServices.update({
+          ...this.task,
+          ...validatedFormData,
+          id: this.task.id,
+        } as FullTask);
+      } else {
+        // Create — assign a new id
+        this.taskServices.add({
+          ...validatedFormData,
+          id: Date.now(),
+        } as FullTask);
+      }
+ 
+      await this.modalController.dismiss({ saved: true });
+ 
+    } catch (e) {
+      const toast = await this.toastController.create({
+        message: 'Something went wrong. Please try again.',
+        duration: 3000,
+        color: 'danger',
+      });
+      await toast.present();
+      this.isLoading = false;
     }
+  }
+ 
+  dismiss(): void {
+    this.modalController.dismiss();
   }
 
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { cardProps } from '@app/core';
+import { cardProps, FullTask } from '@app/core';
 import { CardComponent } from "@app/shared/components";
 
 @Component({
@@ -12,7 +12,7 @@ import { CardComponent } from "@app/shared/components";
 })
 export class TaskCardComponent  implements OnInit {
 
-  @Input() tasks!: cardProps[];
+  @Input() tasks!: FullTask[];
 
   constructor() { }
 

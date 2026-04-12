@@ -4,3 +4,6 @@ export enum FormEnum {
   Select = 'SELECT',
   date =  'DATE'
 }
+
+
+export const STORAGE_KEY = 'tasks_manager';

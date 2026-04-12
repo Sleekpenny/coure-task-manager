@@ -1,13 +1,9 @@
 <div class="create-form">
     <app-form-titles headerTitle="Create your task " subTitle="Task Manager form" />
-    <app-form-content 
-    label="Task Id"
-    placeholder="eg TKT-00000"
-    (ngModel)="formData.id.value = $event"
-    /> 
     <app-form-content-group>
       <app-form-content 
       label="Task title"
+      [value]="task?.title"
       placeholder="Title"
       (ngModel)="formData.title.value = $event"
       /> 
@@ -15,13 +11,16 @@
       <app-form-content 
       [type]="formEnum.select"
       label="Piority"
-      (ngModel)="formData.piority.value = $event"
+      [value]="task?.priority"
+      (ngModel)="formData.priority.value = $event"
       [selectOptions]="selectOptions"
+      []
       /> 
 
       <app-form-content 
       label="Due Date"
       [type]='formEnum.date'
+      [value]="task?.date"
       placeholder="Completion date"
       (ngModel)="formData.date.value = $event"
       /> 
@@ -29,6 +28,7 @@
       <app-form-content 
       [type]="formEnum.select"
       label="Status"
+      [value]="task?.status"
       (ngModel)="formData.status.value = $event"
       [selectOptions]="selectOptionsStatus"
       /> 
@@ -38,8 +38,9 @@
     <app-form-content 
     [type]="formEnum.textarea"
     label="Task description"
+    [value]="task?.description"
     placeholder="Write a short brief of your task"
-    (ngModel)="formData.desc.value = $event"
+    (ngModel)="formData.description.value = $event"
     /> 
 
     <ion-button (click)="submit()" [disabled]="isLoading"> 

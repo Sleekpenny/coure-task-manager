@@ -18,14 +18,14 @@ export class TaskListsComponent implements OnInit {
   @Output() deleteTask = new EventEmitter<FullTask>();
   @Output() editTask = new EventEmitter<FullTask>();
 
-  expandedTaskId: number | null = null;
+  expandedTaskId!:string;
 
   constructor() {}
 
   ngOnInit() {}
 
-  toggleExpand(id: number): void {
-    this.expandedTaskId = this.expandedTaskId === id ? null : id;
+  toggleExpand(id: string): void {
+    this.expandedTaskId = this.expandedTaskId === id ? '' : id;
   }
 
   getStatusClass(status: string): string {

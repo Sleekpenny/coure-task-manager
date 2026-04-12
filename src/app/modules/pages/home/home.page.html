@@ -4,7 +4,7 @@
     <app-header-title title="Tasks Dashboard" subTitle="Manage and track your projects" btnText="Create Task"  (create)="createTask()" icon="pencil" />
     <div class="page-grid">
       <app-ad-tasks (toggleTask)="toggleTask($event)" [tasks]="tasks" />
-      <app-task-card [tasks]="userTasks" />
+      <app-task-card [tasks]="(userTasks$ | async) ?? []" />
     </div>
   </app-page-content>
 </ion-content>

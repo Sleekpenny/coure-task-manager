@@ -2,12 +2,12 @@
   <div class="task-card">
 
     
-    <ion-label>
+    <ion-label> Due
       {{ card.date }}
     </ion-label>
 
     <div class="task-card__header">
-      <span class="task-card__ticket-id">{{ card.ticketId }}</span>
+      <span class="task-card__ticket-id">{{ card.id }}</span>
       <span class="task-card__priority" [ngClass]="'task-card__priority--' + card.priority">
         {{ card.priority | titlecase }}
       </span>
@@ -21,29 +21,12 @@
     <div class="task-card__footer">
       <div class="task-card__comments">
         <ion-icon name="chatbox-outline"></ion-icon>
-        <span class="task-card__comment-count">{{ card.commentCount }}</span>
+        <span class="task-card__comment-count">7</span>
 
         
       <ion-label class="badge" [ngClass]="getStatusClass(card.status)">
         {{ card.status }}
       </ion-label>
-      </div>
-  
-      <div class="task-card__assignees">
-        @for (user of card.assignees.slice(0, 4); track user.name) {
-          <div class="task-card__avatar" [title]="user.name">
-            @if (user.imageUrl) {
-              <img [src]="user.imageUrl" [alt]="user.name" />
-            } @else {
-              {{ initials(user) }}
-            }
-          </div>
-        }
-        @if (card.assignees.length > 4) {
-          <div class="task-card__avatar task-card__avatar--overflow">
-            +{{ card.assignees.length - 4 }}
-          </div>
-        }
       </div>
     </div>
   

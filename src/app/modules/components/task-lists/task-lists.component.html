@@ -15,12 +15,11 @@
     >
       <div>
         <h5>{{ task.title | uppercase }}</h5>
-        <p>By {{ task.initials }}</p>
       </div>
 
       <ion-label>
         <ion-icon name="calendar-outline"></ion-icon>
-        {{ task.dueDate }}
+        {{ task.date }}
       </ion-label>
 
       <div>
@@ -35,11 +34,11 @@
 
     @if (expandedTaskId === task.id) {
       <div class="task-row-actions" (click)="$event.stopPropagation()">
-        <button class="task-action task-action--delete" (click)="deleteTask.emit(task); expandedTaskId = null">
+        <button class="task-action task-action--delete" (click)="deleteTask.emit(task); expandedTaskId = ''">
           <ion-icon name="trash-outline"></ion-icon>
           Delete
         </button>
-        <button class="task-action task-action--edit" (click)="editTask.emit(task); expandedTaskId = null">
+        <button class="task-action task-action--edit" (click)="editTask.emit(task); expandedTaskId = ''">
           <ion-icon name="create-outline"></ion-icon>
           Edit
         </button>
