@@ -70,7 +70,6 @@ export class CreateTaskComponent  implements OnInit {
  
       const validatedFormData = this.formHanlder.validateForm(this.formData);
       if (!validatedFormData) return;
-      console.log(validatedFormData);
 
       if (this.task) {
         this.taskServices.update({

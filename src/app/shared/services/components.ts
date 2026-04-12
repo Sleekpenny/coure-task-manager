@@ -22,7 +22,6 @@ export class ComponentServices {
     await modal.present();
 
     const { data } = await modal.onWillDismiss();
-    console.log('done');
   }
   
   async presentToast(message: string, color?: string) {
