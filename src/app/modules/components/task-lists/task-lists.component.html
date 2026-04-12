@@ -1,0 +1,50 @@
+<app-container>
+  <div class="task-table-header">
+    <span>Task Name</span>
+    <span>Due Date</span>
+    <span>Priority</span>
+    <span>Status</span>
+  </div>
+
+  @for (task of filteredTasks; track task.id) {
+
+    <div
+      class="task-table-row pressable"
+      [class.task-table-row--expanded]="expandedTaskId === task.id"
+      (click)="toggleExpand(task.id)"
+    >
+      <div>
+        <h5>{{ task.title | uppercase }}</h5>
+        <p>By {{ task.initials }}</p>
+      </div>
+
+      <ion-label>
+        <ion-icon name="calendar-outline"></ion-icon>
+        {{ task.dueDate }}
+      </ion-label>
+
+      <div>
+        <div [style.background]="getPriorityColor(task.priority)"></div>
+        <ion-label class="badge">{{ task.priority }}</ion-label>
+      </div>
+
+      <ion-label class="badge" [ngClass]="getStatusClass(task.status)">
+        {{ task.status }}
+      </ion-label>
+    </div>
+
+    @if (expandedTaskId === task.id) {
+      <div class="task-row-actions" (click)="$event.stopPropagation()">
+        <button class="task-action task-action--delete" (click)="deleteTask.emit(task); expandedTaskId = null">
+          <ion-icon name="trash-outline"></ion-icon>
+          Delete
+        </button>
+        <button class="task-action task-action--edit" (click)="editTask.emit(task); expandedTaskId = null">
+          <ion-icon name="create-outline"></ion-icon>
+          Edit
+        </button>
+      </div>
+    }
+
+  }
+</app-container>

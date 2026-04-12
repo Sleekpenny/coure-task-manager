@@ -1,6 +1,11 @@
 <app-container>
   <div class="task-card">
 
+    
+    <ion-label>
+      {{ card.date }}
+    </ion-label>
+
     <div class="task-card__header">
       <span class="task-card__ticket-id">{{ card.ticketId }}</span>
       <span class="task-card__priority" [ngClass]="'task-card__priority--' + card.priority">
@@ -17,6 +22,11 @@
       <div class="task-card__comments">
         <ion-icon name="chatbox-outline"></ion-icon>
         <span class="task-card__comment-count">{{ card.commentCount }}</span>
+
+        
+      <ion-label class="badge" [ngClass]="getStatusClass(card.status)">
+        {{ card.status }}
+      </ion-label>
       </div>
   
       <div class="task-card__assignees">

@@ -78,7 +78,9 @@ export interface NavItem {
     title:string;
     description:string;
     priority:string;
-    commentCount:number
+    commentCount:number;
+    date: Date | number;
+    status: string;
     assignees: TaskCardUser[]
   }
 

@@ -14,6 +14,7 @@ import { IonButton, IonLabel, ModalController, ToastController } from "@ionic/an
 export class CreateTaskComponent  implements OnInit {
 
   selectOptions= ['Low', 'Meduim', 'High'];
+  selectOptionsStatus= ['In Progress', 'Not Stated', 'Overdue', 'Completed', ];
   isLoading: boolean = false
 
   formEnum = {
@@ -24,6 +25,18 @@ export class CreateTaskComponent  implements OnInit {
 
   formData = {
     date: {
+      value: '',
+      required: true,
+    },
+    id: {
+      value: '',
+      required: true,
+    },
+    status: {
+      value: '',
+      required: true,
+    },
+    da: {
       value: '',
       required: true,
     },
@@ -55,6 +68,7 @@ export class CreateTaskComponent  implements OnInit {
 
     } catch(e) {
       this.toastController.create();
+      this.isLoading = await false;
     }
   }
 

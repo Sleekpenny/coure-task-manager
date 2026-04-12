@@ -2,14 +2,14 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import { ContainerComponent } from "../container/container.component";
 import { cardProps, TaskCardUser } from '@app/core';
 import { NgClass, TitleCasePipe } from '@angular/common';
-import { IonIcon } from "@ionic/angular/standalone";
+import { IonIcon, IonLabel } from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   standalone: true,
-  imports: [IonIcon, ContainerComponent, TitleCasePipe, NgClass],
+  imports: [IonLabel, IonIcon, ContainerComponent, TitleCasePipe, NgClass],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
@@ -26,6 +26,16 @@ export class CardComponent {
         .slice(0, 2);
   
 
+  }
+
+  getStatusClass(status: string): string {
+    const map: Record<string, string> = {
+      'In Progress': 'badge--in-progress',
+      'Completed': 'badge--completed',
+      'Not Started': 'badge--not-started',
+      'Overdue': 'badge--overdue',
+    };
+    return map[status] || '';
   }
 
 }

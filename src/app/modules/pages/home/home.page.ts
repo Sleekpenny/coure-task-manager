@@ -18,9 +18,9 @@ import { ComponentServices } from '@app/shared/services';
   standalone:true
 })
 export class HomePage {
+
   activeTab = 'Today';
   tabs = ['Today', 'This Week', 'This Month', 'Reports'];
- 
   tasks = tasks;
   userTasks = userTasks;
 
@@ -30,10 +30,11 @@ export class HomePage {
     task.done = !task.done;
   }
  
+
   setTab(tab: string): void {
     this.activeTab = tab;
   }
-
+  
   createTask() {
     this.component.presentModal(CreateTaskComponent,'')
   }
