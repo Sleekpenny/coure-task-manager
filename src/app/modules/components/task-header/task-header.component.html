@@ -18,7 +18,7 @@
 
       @if (showPriorityDropdown) {
         <div class="priority-dropdown">
-          @for (p of ['All', 'High', 'Medium', 'Low']; track p) {
+          @for (p of priorityFiltering; track p) {
             <button
               class="priority-dropdown__item"
               [class.active]="activePriority === p"

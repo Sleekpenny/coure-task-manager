@@ -20,6 +20,7 @@ import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
 })
 export class TasksPage {
   filters = ['All', 'In Progress', 'Completed', 'Not Started', 'Overdue'];
+  priorityFiltering = ['All', 'High', 'Medium', 'Low']
  
   private activeFilter$ = new BehaviorSubject<string>('All');
   private activePriority$ = new BehaviorSubject<string>('All');

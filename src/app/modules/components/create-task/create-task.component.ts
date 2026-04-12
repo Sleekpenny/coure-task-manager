@@ -2,18 +2,19 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import { FormEnum, FullTask, TaskServices } from '@app/core';
 import { FormContentComponent, FormContentGroupComponent, FormTitlesComponent } from '@app/shared/components';
 import { FormHandler } from '@app/shared/services/form-handler';
-import { IonButton, IonLabel, ModalController, ToastController } from "@ionic/angular/standalone";
+import { IonButton, IonLabel, ModalController, ToastController, IonSpinner } from "@ionic/angular/standalone";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-create-task',
   templateUrl: './create-task.component.html',
   styleUrls: ['./create-task.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [IonLabel, FormContentComponent, FormContentGroupComponent, FormTitlesComponent, IonButton]
+  imports: [IonSpinner, IonLabel, FormContentComponent, FormContentGroupComponent, FormTitlesComponent, IonButton, FormsModule]
 })
 export class CreateTaskComponent  implements OnInit {
   @Input() task?: FullTask;
-  selectOptions= [{id: 'low', value: 'Low'}, {id:'medium', value: 'Medium'}, {id: 'high', value: 'High'}, {id:'all', value: 'Alll'}];
+  selectOptions= [{value: 'low', id: 'Low'}, {value:'medium', id: 'Medium'}, {value: 'high', id: 'High'}, {value:'all', id: 'All'}];
   selectOptionsStatus= [ 
     {value: 'all', id: 'All'},
     {value: 'in-progress', id: 'In Progress'},
@@ -88,12 +89,14 @@ export class CreateTaskComponent  implements OnInit {
       await this.modalController.dismiss({ saved: true });
  
     } catch (e) {
+      this.isLoading = false;
       const toast = await this.toastController.create({
-        message: 'Something went wrong. Please try again.',
-        duration: 3000,
+        message: `${e} Sorry, form cannot be submitted`,
+        duration: 1500,
         color: 'danger',
       });
       await toast.present();
+    } finally {
       this.isLoading = false;
     }
   }

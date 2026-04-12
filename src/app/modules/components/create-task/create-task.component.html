@@ -45,7 +45,10 @@
     (ngModel)="formData.description.value = $event"
     /> 
 
-    <ion-button (click)="submit()" [disabled]="isLoading"> 
+    <ion-button (click)="submit()" [disabled]="isLoading">
+      @if (isLoading) {
+        <ion-spinner  name="crescent" ></ion-spinner>
+      } 
       <ion-label> Continue </ion-label>
     </ion-button>
 

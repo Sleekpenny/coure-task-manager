@@ -18,19 +18,17 @@ import { AsyncPipe } from '@angular/common';
   imports: [IonContent, AsyncPipe, PageContentComponent, HeaderComponent, AdTasksComponent, TaskCardComponent, HeaderTitleComponent, CreateTaskComponent],
   standalone:true
 })
-export class HomePage implements OnInit {
+export class HomePage {
 
   activeTab = 'Today';
   tabs = ['Today', 'This Week', 'This Month', 'Reports'];
   tasks = tasks;
   userTasks$!: Observable<FullTask[]>;
 
-  constructor(private component: ComponentServices,  private taskService: TaskServices) {}
-  
-  ngOnInit() {
-    this.userTasks$ = this.taskService.tasks;
+  constructor(private component: ComponentServices,  private taskService: TaskServices) {
+    this.userTasks$ = this.taskService.tasks
   }
-
+  
   toggleTask(task: any): void {
     task.done = !task.done;
   } 

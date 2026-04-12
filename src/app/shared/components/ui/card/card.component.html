@@ -1,7 +1,7 @@
 <app-container>
-  <div class="task-card">
 
-    
+  <div class="task-card">
+   
     <ion-label> Due
       {{ card.date }}
     </ion-label>
@@ -22,11 +22,14 @@
       <div class="task-card__comments">
         <ion-icon name="chatbox-outline"></ion-icon>
         <span class="task-card__comment-count">7</span>
+      </div>
 
         
-      <ion-label class="badge" [ngClass]="getStatusClass(card.status)">
-        {{ card.status }}
-      </ion-label>
+      <div class="badge" [ngClass]="getStatusClass(card.status)">
+        <ion-label>
+
+          {{ card.status }}
+        </ion-label>
       </div>
     </div>
   

@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class TaskHeaderComponent implements OnInit {
   @Input() activeFilter!: string;
   @Input() filters!: string[];
+  @Input() priorityFiltering!: string[];
 
   @Output() setFilter = new EventEmitter<string>();
   @Output() openModal = new EventEmitter<void>();
