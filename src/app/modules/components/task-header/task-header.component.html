@@ -10,7 +10,7 @@
   <div class="panze-topbar__right">
     <div class="priority-filter-wrap">
       <ion-button color="none" (click)="showPriorityDropdown = !showPriorityDropdown; $event.stopPropagation()">
-        <ion-icon name="filter-outline" size="large"></ion-icon>
+        <ion-icon name="filter-outline" size="large" color="dark"></ion-icon>
         @if (activePriority !== 'All') {
           <span class="priority-badge">{{ activePriority }}</span>
         }
@@ -32,8 +32,8 @@
     </div>
 
     <ion-button color="none" class="active" (click)="openModal.emit()">
-      <ion-icon name="add-outline"></ion-icon>
-      New Task
+      <ion-icon name="add-outline" color="dark"></ion-icon>
+      <ion-label color="dark">New Task</ion-label>
     </ion-button>
   </div>
 </div>

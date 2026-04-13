@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, ElementRef, HostListener } from '@angular/core';
-import { IonButton, IonIcon } from "@ionic/angular/standalone";
+import { IonButton, IonIcon, IonLabel } from "@ionic/angular/standalone";
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './task-header.component.html',
   styleUrls: ['./task-header.component.scss'],
   standalone: true,
-  imports: [IonIcon, IonButton, CommonModule],
+  imports: [IonLabel, IonIcon, IonButton, CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskHeaderComponent implements OnInit {
